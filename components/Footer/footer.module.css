@@ -1,0 +1,29 @@
+.footerMain {
+  background-color: blue;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.footerP {
+  font-family: "Anton";
+  font-size: 1.8rem;
+  border-bottom: white solid 4px;
+
+  margin: 10px 0;
+}
+
+.footerPDiv {
+  border: 2px solid black;
+  height: fit-content;
+}
+.footerLinks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-self: center;
+  align-self: center;
+  column-gap: 40px;
+  row-gap: 20px;
+  font-size: 1.2rem;
+  font-family: "Anton";
+}

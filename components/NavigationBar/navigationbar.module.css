@@ -1,0 +1,51 @@
+.mainNavDiv {
+  /* width: 100%; */
+  display: flex;
+  align-items: center;
+  background-color: black;
+  justify-content: space-between;
+  overflow: hidden;
+  /* border: red 2px solid; */
+}
+.img {
+  /* margin-bottom: 400px; */
+  width: 60px;
+  /* height: 200px; */
+  cursor: pointer;
+  margin: 5px;
+  transform: scale(1.8);
+  /* border: green 2px solid; */
+}
+.navButtons {
+  display: flex;
+  column-gap: 20px;
+  font-size: 5vm;
+  margin-left: 20px;
+}
+
+.list {
+  font-size: 1.2rem;
+  font-family: "Oswald";
+  color: white;
+  /* font-weight: bold; */
+}
+.list:last-child {
+  margin-right: 20px;
+}
+
+@media screen and (max-width: 866px) {
+  .navContainer {
+    flex-direction: column;
+  }
+
+  .navMenu {
+    align-items: center;
+  }
+  .searchBarcontainerNav {
+    align-self: flex-start;
+    width: 100%;
+  }
+  .navLinkActive {
+    margin-top: 5px;
+  }
+}

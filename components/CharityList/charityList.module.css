@@ -1,0 +1,8 @@
+.mainCardList {
+  display: flex;
+  column-gap: 20px;
+  row-gap: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}

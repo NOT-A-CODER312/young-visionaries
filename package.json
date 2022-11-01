@@ -1,5 +1,5 @@
 {
-  "name": "helpsave",
+  "name": "young-visionaries-youth-club",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,12 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "12.2.2",
+    "@fortawesome/fontawesome-svg-core": "^6.2.0",
+    "@fortawesome/free-brands-svg-icons": "^6.2.0",
+    "@fortawesome/free-regular-svg-icons": "^6.2.0",
+    "@fortawesome/free-solid-svg-icons": "^6.2.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "next": "^12.2.2",
+    "payment": "^2.4.6",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-credit-cards": "^0.8.3",
+    "react-dom": "18.2.0",
+    "uniqid": "^5.4.0"
   },
   "devDependencies": {
     "eslint": "8.19.0",
-    "eslint-config-next": "12.2.2"
+    "eslint-config-next": "12.2.2",
+    "lorem-ipsum": "^2.0.8"
   }
 }

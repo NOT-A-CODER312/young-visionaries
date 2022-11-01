@@ -1,0 +1,101 @@
+.mainDiv {
+  /* width: 100%; */
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+}
+
+.faPlus {
+  font-size: 1.4rem;
+  color: rgb(7, 7, 7);
+  cursor: pointer;
+  justify-self: flex-end;
+  /* border: solid red 2px; */
+
+  /* border-bottom: 1px dotted black; */
+}
+
+.faPlusHoverText {
+  position: relative;
+  /* justify-content: flex-end;
+  border: solid red 2px; */
+  margin-left: auto;
+  width: 1.2rem;
+
+  /* border-bottom: 1px dotted black; */
+}
+
+.faPlusHoverText:before {
+  content: attr(data-hover);
+  visibility: hidden;
+  opacity: 0;
+  width: 140px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px 0;
+  transition: opacity 1s ease-in-out;
+
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 110%;
+}
+
+.faPlusHoverText:hover:before {
+  opacity: 1;
+  visibility: visible;
+}
+
+.formMainDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+.formHeader {
+  font-size: 1.2rem;
+  font-family: "Oswald";
+  margin-bottom: -10px;
+}
+
+.eventForm {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.dateSelector,
+.eventName,
+.eventDes {
+  width: 100%;
+}
+
+.eventDes {
+  resize: none;
+  height: 40px;
+}
+.eventSubmitButton {
+  background-color: rgb(234, 42, 8);
+  width: fit-content;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 5px;
+  color: white;
+  border: none;
+}
+.mainButtonText {
+  font-size: 2.6rem;
+  padding: 5px;
+}
+
+@media screen and (max-width: 500px) {
+  .eventSubmitButton {
+    font-size: 3vw;
+    padding: 5px;
+  }
+}

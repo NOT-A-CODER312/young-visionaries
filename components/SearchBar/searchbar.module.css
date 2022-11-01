@@ -1,0 +1,24 @@
+.searchDiv {
+  display: flex;
+  /* background-color: blue; */
+}
+
+.searchBar {
+  border: blue 2px solid;
+  height: 35px;
+  width: 100%;
+}
+
+.SearchButton {
+  background-color: blue;
+  color: white;
+  height: 35px;
+  width: 40px;
+  border: none;
+  font-size: 1.2rem;
+}
+
+/* .searchBar,
+.SearchButton {
+  margin-top: 5px;
+} */
