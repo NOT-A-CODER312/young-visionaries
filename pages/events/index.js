@@ -1,8 +1,7 @@
-import CharityList from "../../components/CharityList/charityList";
+import EventList from "../../components/EventsList/EventList";
 import EditList from "../../components/EditList/EditList";
 import charityList from "../../List/charityList";
 import styles from "../../styles/eventIndex.module.css";
-
 export default function MainCharityPage() {
   return (
     <div className="mainCharityListFlex">
@@ -11,7 +10,7 @@ export default function MainCharityPage() {
         <EditList />
       </div>
       <div className="cardList">
-        <CharityList charityList={charityList} />
+        <EventList eventList={charityList} />
       </div>
     </div>
   );

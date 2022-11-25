@@ -1,0 +1,26 @@
+.img {
+  width: 250px;
+  border-radius: 20px;
+  /* border: blueviolet solid 2px; */
+  overflow: hidden;
+}
+
+.mainCard {
+  background-color: rgb(255, 255, 255);
+  width: 250px;
+  height: 350px;
+  overflow: hidden;
+  border-radius: 10px;
+  cursor: pointer;
+  /* border: rgba(0, 0, 0, 0.519) solid 2px; */
+}
+
+.title {
+  font-size: 1.2rem;
+  font-family: "Anton";
+  padding: 2px;
+}
+
+.des {
+  padding: 2px;
+}

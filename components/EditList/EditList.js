@@ -71,7 +71,7 @@ export default function EditList() {
             ref={formRef}
           >
             <div className={styles.eventName}>
-              <label for="eventName">Event Name</label>
+              <label>Event Name</label>
               <input
                 placeholder="Event Name"
                 className={styles.eventName}
@@ -80,7 +80,7 @@ export default function EditList() {
               />
             </div>
             <div className={styles.eventName}>
-              <label for="eventDescription">Event Description</label>
+              <label>Event Description</label>
               <textarea
                 placeholder="Event Description"
                 className={styles.eventDes}
@@ -91,7 +91,7 @@ export default function EditList() {
             </div>
 
             <div className={styles.dateSelector}>
-              <label for="date">Event Date</label>
+              <label>Event Date</label>
               <input
                 type="date"
                 id="date"
@@ -102,7 +102,7 @@ export default function EditList() {
             </div>
 
             <div>
-              <label for="image">Upload Image</label>
+              <label>Upload Image</label>
               <br />
               <input
                 type="file"

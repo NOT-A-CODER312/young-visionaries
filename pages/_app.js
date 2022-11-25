@@ -3,7 +3,6 @@ import "../styles/index.css";
 import "../styles/charityIndex.css";
 import "../styles/cardStyles.css";
 import Layout from "../components/layout/layout";
-import "react-credit-cards/es/styles-compiled.css";
 import Head from "next/head";
 
 function MyApp({ Component, pageProps }) {

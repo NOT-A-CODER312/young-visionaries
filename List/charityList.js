@@ -13,52 +13,59 @@ const lorem = new LoremIpsum({
 
 const charityListFirst = [
   {
-    img: "/hungrykid1.jpg",
-    title: "Help save kids in Ukraine",
-    des: "Help orphans in Ukraine by donating to help buy food.",
-    url: "/charities/Help save kids in Ukraine",
-  },
-  {
     img: "/ukraine-war-military-1.webp",
     title: "Help save kids in Africa",
     des: "Help orphans in Ukraine by donating to help buy food.",
-    url: "/charities/Help save kids in Africa",
+    url: "/events/Help save kids in Africa",
   },
+  {
+    img: "/flat-halloween-party-poster_52683-45220.webp",
+    title: "Halloween Party",
+    des: "Come to the young visionaries halloween party",
+    url: "/events/Halloween Party",
+  },
+  {
+    img: "/flat-halloween-party-poster_52683-45220.webp",
+    title: "Halloween Party",
+    des: "Come to the young visionaries halloween party",
+    url: "/events/Halloween Party",
+  },
+
   {
     img: "/hungrykid1.jpg",
     title: "Help save kids in Ukraine",
     des: "Help orphans in Ukraine by donating to help buy food.",
-    url: "/charities/Help save kids in Ukraine",
+    url: "/events/Help save kids in Ukraine",
   },
   {
     img: "/ukraine-war-military-1.webp",
     title: "Help save kids in Ukraine",
     des: "Help orphans in Ukraine by donating to help buy food.",
-    url: "/charities/Help save kids in Ukraine",
+    url: "/events/Help save kids in Ukraine",
   },
   {
     img: "/hungrykid1.jpg",
     title: "Help save kids in Ukraine",
     des: "Help orphans in Ukraine by donating to help buy food.",
-    url: "/charities/Help save kids in Ukraine",
+    url: "/events/Help save kids in Ukraine",
   },
   {
     img: "/ukraine-war-military-1.webp",
     title: "Help save kids in Afica",
     des: "Help orphans in Ukraine by donating to help buy food.",
-    url: "/charities/Help save kids in Africa",
+    url: "/events/Help save kids in Africa",
   },
   {
     img: "/hungrykid1.jpg",
     title: "Help save kids in Ukraine",
     des: "Help orphans in Ukraine by donating to help buy food.",
-    url: "/charities/Help save kids in Ukraine",
+    url: "/events/Help save kids in Ukraine",
   },
   {
     img: "/ukraine-war-military-1.webp",
     title: "Help save kids in Ukraine",
     des: "Help orphans in Ukraine by donating to help buy food.",
-    url: "/charities/Help save kids in Ukraine",
+    url: "/events/Help save kids in Ukraine",
   },
 ];
 
@@ -66,6 +73,11 @@ const charitySiteList = [
   {
     img: "/hungrykid1.jpg",
     title: "Help save kids in Ukraine",
+    body: lorem.generateParagraphs(3),
+  },
+  {
+    img: "/flat-halloween-party-poster_52683-45220.webp",
+    title: "Halloween Party",
     body: lorem.generateParagraphs(3),
   },
   {
