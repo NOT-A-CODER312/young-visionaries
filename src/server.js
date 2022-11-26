@@ -4,7 +4,7 @@ const expressServer = http.createServer(app);
 
 const mongoose = require("mongoose");
 const MONGO_URI =
-  "mongodb+srv://young-vision:young-vision@cluster0.lvweu.mongodb.net/young-vision?retryWrites=true&w=majority";
+  "mongodb+srv://admin:le6TlW6nWXXxc984@cluster0.jiq5pqu.mongodb.net/?retryWrites=true&w=majority";
 
 const PORT = process.env.PORT || 3009;
 
