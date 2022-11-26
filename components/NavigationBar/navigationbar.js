@@ -1,9 +1,9 @@
 import classes from "./navigationbar.module.css";
-
 import { useState, Fragment, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import SignUPNav from "../signup/signinNav";
 
 // import SearchBar from "../searchbar/SearchBar";
 
@@ -41,11 +41,12 @@ export default function NavigationBar() {
       </div>
       <div className={classes.navButtons}>
         <div className={classes.list}>
-          <Link href="/">Events</Link>
+          <Link href="/events">Events</Link>
         </div>
         <div className={classes.list}>
-          <Link href="/charities">Roles</Link>
+          <Link href="/candidates">Roles</Link>
         </div>
+        <SignUPNav />
       </div>
     </nav>
   );

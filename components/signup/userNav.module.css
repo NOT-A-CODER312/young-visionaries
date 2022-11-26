@@ -1,0 +1,26 @@
+.itemColor {
+  color: rgb(37, 37, 252);
+  width: 14px;
+}
+.LinkColor {
+  color: white;
+}
+.icon {
+  width: 12px;
+}
+.iconLog {
+  width: 14px;
+}
+
+.signOutButton {
+  font-family: "Kanit";
+  color: black;
+  background-color: yellow;
+  font-size: 1.2rem;
+  /* word-spacing: -16px; */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 3px 5px;
+  margin-right: 10px;
+}

@@ -1,7 +1,8 @@
 import NavigationBar from "../NavigationBar/navigationbar";
 import { useRouter } from "next/dist/client/router";
-// import NotFoundPage from "../../pages/404";
-// import Footer from "../Footer/footer";
+import { useSession } from "next-auth/react";
+import useStore from "../zustandStates/store";
+import { useEffect } from "react";
 
 export default function Layout(props) {
   const router = useRouter();
@@ -10,6 +11,29 @@ export default function Layout(props) {
   //   console.log(router.pathname);
   //   return <NotFoundPage />;
   // }
+
+  const { data: session } = useSession();
+
+  const addAdmin = useStore((state) => state.addAdmin);
+  const link = useStore((state) => state.link);
+
+  const getUserData = async () => {
+    await fetch(`${link}/user/${session.user.id}`);
+    await fetch(`${link}/user/userInfo/${session.user.id}`)
+      .then((res) => res.json())
+      .then((res) => {
+        addAdmin(res.admin);
+      });
+  };
+
+  useEffect(() => {
+    (async () => {
+      if (session) {
+        await getUserData();
+      }
+    })();
+    // console.log("Working in layout");
+  }, [link, session]);
 
   return (
     <div>

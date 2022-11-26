@@ -28,6 +28,26 @@ export default class CustomDocument extends Document {
             name="donate to charity"
             content="Donate and help save people"
           />
+          {/* <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap"
+          rel="stylesheet"
+        /> */}
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossOrigin="true"
+          />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap"
+            rel="stylesheet"
+          ></link>
+          <link
+            href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kanit&family=Oswald:wght@700&display=swap"
+            rel="stylesheet"
+          />
         </Head>
 
         <body>
