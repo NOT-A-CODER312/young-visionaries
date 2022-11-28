@@ -4,6 +4,14 @@ import { faCirclePlus, faCircleMinus } from "@fortawesome/free-solid-svg-icons";
 import { useState, useRef } from "react";
 
 export default function EditList() {
+  <form action="/send-data-here" method="post">
+    <label for="first">First name:</label>
+    <input type="text" id="first" name="first" />
+    <label for="last">Last name:</label>
+    <input type="text" id="last" name="last" />
+    <button type="submit">Submit</button>
+  </form>
+
   const [editClick, setEditClick] = useState(true);
   const [uploadImageName, setUploadImageName] = useState("");
   const [uploadImage, setUploadImage] = useState("");

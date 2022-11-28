@@ -1,5 +1,6 @@
 import EventList from "../../components/EventsList/EventList";
 import EditList from "../../components/EditList/EditList";
+import EventSuggest from "../../components/EventsList/EventSuggest";
 import charityList from "../../List/charityList";
 import styles from "../../styles/eventIndex.module.css";
 import { useSession } from "next-auth/react";
@@ -12,8 +13,14 @@ export default function MainCharityPage() {
   console.log(admin, "admin");
 
   return (
+
     <div className="mainCharityListFlex">
       <div className="pageTitle">Events</div>
+
+      <div className="suggestBox">
+        <EventSuggest />
+      </div>
+      
       {session ? (
         admin ? (
           <div className={styles.editList}>
