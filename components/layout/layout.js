@@ -15,6 +15,8 @@ export default function Layout(props) {
   const { data: session } = useSession();
 
   const addAdmin = useStore((state) => state.addAdmin);
+  const addVotedVp = useStore((state) => state.addVotedVp);
+  const addVotedTreasurer = useStore((state) => state.addVotedTreasurer);
   const link = useStore((state) => state.link);
 
   const getUserData = async () => {
@@ -23,6 +25,8 @@ export default function Layout(props) {
       .then((res) => res.json())
       .then((res) => {
         addAdmin(res.admin);
+        addVotedVp(res.votedVP);
+        addVotedTreasurer(res.votedTreasurer);
       });
   };
 
