@@ -17,8 +17,10 @@ export default function Layout(props) {
   const addAdmin = useStore((state) => state.addAdmin);
   const uniSwitch = useStore((state) => state.uniSwitch);
   const addVotedVp = useStore((state) => state.addVotedVp);
-  const addVotedTreasurer = useStore((state) => state.addVotedTreasurer);
+  // const addVotedTreasurer = useStore((state) => state.addVotedTreasurer);
   const addCharityList = useStore((state) => state.addCharityList);
+  const addVotedVP = useStore((state) => state.addVotedVP);
+  const addVotedTreasurer = useStore((state) => state.addVotedTreasurer);
   const link = useStore((state) => state.link);
 
   const getUserData = async () => {
@@ -27,7 +29,7 @@ export default function Layout(props) {
       .then((res) => res.json())
       .then((res) => {
         addAdmin(res.admin);
-        addVotedVp(res.votedVP);
+        addVotedVP(res.votedVP);
         addVotedTreasurer(res.votedTreasurer);
       });
   };
