@@ -13,7 +13,7 @@ const lorem = new LoremIpsum({
 
 const charityListFirst = [
   {
-    img: "/ukraine-war-military-1.webp",
+    img: "https://i.ibb.co/QDdFfDS/download-1.jpg",
     title: "Help save kids in Africa",
     des: "Help orphans in Ukraine by donating to help buy food.",
     url: "/events/Help save kids in Africa",
@@ -92,8 +92,8 @@ const filtereList = (list, filter) => {
   if (filter !== undefined) {
     const filteredFilter = filter;
 
-    return list.filter(({ title }) => {
-      return title === filteredFilter;
+    return list.filter(({ eventName }) => {
+      return eventName === filteredFilter;
     });
   }
 };

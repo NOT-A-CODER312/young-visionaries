@@ -2,15 +2,14 @@ import styles from "./EditList.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus, faCircleMinus } from "@fortawesome/free-solid-svg-icons";
 import { useState, useRef } from "react";
+import useStore from "../zustandStates/store";
+import { useRouter } from "next/router";
 
-export default function EditList() {
-  <form action="/send-data-here" method="post">
-    <label for="first">First name:</label>
-    <input type="text" id="first" name="first" />
-    <label for="last">Last name:</label>
-    <input type="text" id="last" name="last" />
-    <button type="submit">Submit</button>
-  </form>
+export default function EditList({ edit, filterListState }) {
+  const router = useRouter();
+  const addUniSwitch = useStore((state) => state.addUniSwitch);
+  const uniSwitch = useStore((state) => state.uniSwitch);
+  const charityList = useStore((state) => state.charityList);
 
   const [editClick, setEditClick] = useState(true);
   const [uploadImageName, setUploadImageName] = useState("");
@@ -26,8 +25,6 @@ export default function EditList() {
   }
   function ImageOnChange(e) {
     setUploadImageName(e.target.value);
-    console.log(e.target.files[0]);
-    setUploadImage(e.target.files[0]);
   }
   function DateOnChange(e) {
     setDate(e.target.value);
@@ -41,23 +38,83 @@ export default function EditList() {
   async function FormOnSubmit(e) {
     e.preventDefault();
 
-    const formData = new FormData(formRef.current);
-    formData.append("image", uploadImage);
-    formData.append("eventName", eventName);
-    formData.append("eventDes", eventDes);
-    formData.append("date", date);
-    formData.append("active", true);
-    console.log(formData);
-
     await fetch(`http://localhost:3009/events/postEvent`, {
       method: "post",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      body: formData,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        eventName,
+        eventDes,
+        date,
+        active: true,
+        imageLink: uploadImageName,
+      }),
+    }).then(() => addUniSwitch(!uniSwitch));
+  }
+
+  async function FormOnSubmitEdit(e) {
+    e.preventDefault();
+
+    let eName = eventName;
+    let eDes = eventDes;
+    let eDate = date;
+    let eLink = uploadImageName;
+
+    if (eventName === "") {
+      eName = filterListState.eventName;
+    }
+    if (eventDes === "") {
+      eDes = filterListState.eventDes;
+    }
+    if (uploadImageName === "") {
+      eLink = filterListState.imageLink;
+    }
+    if (date === "") {
+      eDate = filterListState.date;
+    }
+    console.log(
+      {
+        eName,
+        eDate,
+        eDate,
+        active: true,
+        eLink,
+      },
+      charityList,
+      "eevent"
+    );
+
+    await fetch(`http://localhost:3009/events/postEvent/edit`, {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        eName,
+        eDes,
+        eDate,
+        active: true,
+        eLink,
+        id: filterListState._id,
+      }),
+    }).then(() => {
+      addUniSwitch(!uniSwitch);
+      router.push("/events/" + eName);
     });
   }
 
+  const onClickHandlerDelete = async () => {
+    await fetch(`http://localhost:3009/events/delete/${filterListState._id}`, {
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then(() => {
+      addUniSwitch(!uniSwitch);
+      router.push("/events");
+    });
+  };
   return (
     <div className={styles.mainDiv}>
       <div className={styles.faPlusHoverText} data-hover="Edit List">
@@ -75,7 +132,7 @@ export default function EditList() {
 
           <form
             className={styles.eventForm}
-            onSubmit={FormOnSubmit}
+            onSubmit={edit ? FormOnSubmitEdit : FormOnSubmit}
             ref={formRef}
           >
             <div className={styles.eventName}>
@@ -109,19 +166,25 @@ export default function EditList() {
               />
             </div>
 
-            <div>
-              <label>Upload Image</label>
-              <br />
+            <div className={styles.dateSelector}>
+              <label>Event Image Link</label>
               <input
-                type="file"
-                id="image"
-                name="image"
-                value={uploadImageName}
+                type="text"
+                id="img"
+                name="img"
+                className={styles.dateSelector}
                 onChange={ImageOnChange}
+                value={uploadImageName}
               />
             </div>
             <button className={styles.eventSubmitButton}>Submit Event</button>
           </form>
+          <button
+            className={edit ? styles.deleteButton : "displayNone"}
+            onClick={onClickHandlerDelete}
+          >
+            Delete Event
+          </button>
         </div>
       )}
     </div>
