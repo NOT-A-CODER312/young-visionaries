@@ -1,8 +1,23 @@
-const { addEvent } = require("../../models/eventsList.model");
+const {
+  addEvent,
+  getAllEvents,
+  EditEvent,
+  deleteEvent,
+} = require("../../models/eventsList.model");
 // var imgModel = require("./model");
 const imgModel = require("../../models/eventsList.mongo");
 const fs = require("fs");
 const path = require("path");
+
+async function httGetAllEvents(req, res) {
+  try {
+    const events = await getAllEvents();
+    // console.log(user, "user");
+    return res.json(events);
+  } catch (e) {
+    console.error(e);
+  }
+}
 
 async function httpPostEvent(req, res) {
   try {
@@ -13,7 +28,7 @@ async function httpPostEvent(req, res) {
       !event.date ||
       !event.active ||
       !event.eventDes ||
-      !event.image
+      !event.imageLink
     ) {
       console.log({
         error: "Missing required data",
@@ -25,59 +40,71 @@ async function httpPostEvent(req, res) {
       });
     }
 
-    // if(event.date instanceof Date ){
-
-    // }
-    var obj = {
-      eventName: event.eventName,
-      eventDes: event.eventDes,
-      date: event.date,
-      image: {
-        data: fs.readFileSync(
-          path.join(__dirname + "/uploads/" + req.file.image)
-        ),
-        contentType: "image/png",
-      },
-    };
-    console.log(obj);
-    // imgModel.create(obj, (err, item) => {
-    //   if (err) {
-    //     console.log(err);
-    //   } else {
-    //     // item.save();
-    //     res.redirect("/");
-    //   }
-    // });
-
-    const addEventToList = await addEvent(obj);
+    const addEventToList = await addEvent(event);
 
     if (addEventToList !== null) {
-      console.log({ added: "exist", obj });
+      console.log({ added: "exist", event });
       return res.status(409).json({ added: "exist" });
     }
     if (addEventToList === false) {
-      console.log({ added: false, obj });
+      console.log({ added: false, event });
       return res.status(409).json({ added: false });
     }
     if (addEventToList === null) {
-      console.log({ added: true, obj });
+      console.log({ added: true, event });
       return res.json({ added: true });
     }
   } catch (e) {
     console.error(e);
   }
 }
-
-async function httpGetImage(req, res) {
+async function httpPostEventEdit(req, res) {
   try {
-    imgModel.find({}, (err, items) => {
-      if (err) {
-        console.log(err);
-        res.status(500).send("An error occurred", err);
-      } else {
-        res.render("imagesPage", { items: items });
-      }
-    });
+    const event = req.body;
+    console.log(req.body);
+    if (
+      !event.eName ||
+      !event.eDes ||
+      !event.eDate ||
+      !event.active ||
+      !event.eLink ||
+      !event.id
+    ) {
+      console.log({
+        error: "Missing required data",
+        event,
+      });
+      return res.status(400).json({
+        error: "Missing requireed data",
+        event,
+      });
+    }
+
+    const addEventToList = await EditEvent(event);
+
+    // if (addEventToList !== null) {
+    //   console.log({ added: "exist", event });
+    //   return res.status(409).json({ added: "exist" });
+    // }
+    // if (addEventToList === false) {
+    //   console.log({ added: false, event });
+    //   return res.status(409).json({ added: false });
+    // }
+    // if (addEventToList === null) {
+    console.log({ added: true, event });
+    return res.json({ added: true });
+    // }
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+async function httGetDelete(req, res) {
+  try {
+    const eventId = req.params.id;
+    const events = await deleteEvent(eventId);
+    // console.log(user, "user");
+    return res.json(events);
   } catch (e) {
     console.error(e);
   }
@@ -110,6 +137,8 @@ async function httpPostImage(req, res) {
 
 module.exports = {
   httpPostEvent,
-  httpGetImage,
   httpPostImage,
+  httGetAllEvents,
+  httpPostEventEdit,
+  httGetDelete,
 };

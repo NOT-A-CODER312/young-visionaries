@@ -7,6 +7,7 @@ const helmet = require("helmet");
 const cors = require("cors");
 const evnetsListRouter = require("./routes/events/eventsList.router");
 const userListener = require("./routes/user/user.router");
+const candidatesListener = require("./routes/candidates/candidates.router");
 // const bodyParser = require("body-parser");
 
 app.use(express.json({ limit: "50mb" }));
@@ -28,5 +29,6 @@ app.use(
 // app.use(express.json());
 app.use("/events", evnetsListRouter);
 app.use("/user", userListener);
+app.use("/candidate", candidatesListener);
 
 module.exports = app;

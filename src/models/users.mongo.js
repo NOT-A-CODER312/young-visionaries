@@ -17,6 +17,14 @@ const usersSchema = new Schema({
     type: Boolean,
     required: true,
   },
+  votedVP: {
+    type: Boolean,
+    required: true,
+  },
+  VotedTreasurer: {
+    type: Boolean,
+    required: true,
+  },
 });
 
 module.exports = model("users", usersSchema);

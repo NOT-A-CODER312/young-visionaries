@@ -5,13 +5,33 @@ async function findUserAddUserInfo(id) {
     {
       _id: id,
       admin: { $exists: false },
+      votedVP: { $exists: false },
+      VotedTreasurer: { $exists: false },
     },
     {
+      votedVP: false,
+      VotedTreasurer: false,
       admin: false,
     },
     { upsert: false }
   );
 }
+async function findAllUpdate() {
+  return await usersDB.updateMany(
+    {
+      // admin: { $exists: false },
+      votedVP: { $exists: false },
+      VotedTreasurer: { $exists: false },
+    },
+    {
+      votedVP: false,
+      VotedTreasurer: false,
+      admin: false,
+    },
+    { upsert: false }
+  );
+}
+// findAllUpdate();
 
 async function setAdmin(id, admin) {
   try {
@@ -44,4 +64,47 @@ async function userIdExist(id) {
   // });
 }
 
-module.exports = { setAdmin, getOneUser, findUserAddUserInfo, userIdExist };
+async function setVotedVp(id) {
+  try {
+    console.log(id, "sdfdsf", true);
+    const user = await usersDB.findOneAndUpdate(
+      { _id: id },
+      {
+        votedVP: true,
+        // name: "not me",
+      }
+    );
+    console.log(user);
+    return true;
+  } catch (e) {
+    console.error(e);
+    return false;
+  }
+}
+
+async function setVotedT(id) {
+  try {
+    console.log(id, "sdfdsf", true);
+    const user = await usersDB.findOneAndUpdate(
+      { _id: id },
+      {
+        VotedTreasurer: true,
+        // name: "not me",
+      }
+    );
+    console.log(user);
+    return true;
+  } catch (e) {
+    console.error(e);
+    return false;
+  }
+}
+
+module.exports = {
+  setAdmin,
+  getOneUser,
+  findUserAddUserInfo,
+  userIdExist,
+  setVotedVp,
+  setVotedT,
+};

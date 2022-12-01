@@ -21,7 +21,53 @@ async function addEvent(event) {
         upsert: true,
       }
     );
-    console.log(events);
+    // console.log(events);
+    return events;
+  } catch (e) {
+    console.error(e);
+    return false;
+  }
+}
+async function EditEvent(event) {
+  try {
+    const events = await eventsListDB.findOneAndUpdate(
+      {
+        _id: event.id,
+      },
+      {
+        eventName: event.eName,
+        eventDes: event.eDes,
+        imageLink: event.eLink,
+        date: event.eDate,
+      },
+      {
+        upsert: true,
+      }
+    );
+    // console.log(events);
+    return events;
+  } catch (e) {
+    console.error(e);
+    return false;
+  }
+}
+async function deleteEvent(id) {
+  try {
+    const events = await eventsListDB
+      .findByIdAndDelete(
+        {
+          _id: id,
+        },
+        function (err, docs) {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log("Deleted User : ", docs);
+          }
+        }
+      )
+      .clone();
+    // console.log(events);
     return events;
   } catch (e) {
     console.error(e);
@@ -32,4 +78,6 @@ async function addEvent(event) {
 module.exports = {
   getAllEvents,
   addEvent,
+  EditEvent,
+  deleteEvent,
 };

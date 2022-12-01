@@ -17,10 +17,9 @@ const eventsSchema = new Schema({
     type: Boolean,
     required: true,
   },
-  image: {
-    data: Buffer,
+  imageLink: {
+    data: String,
     contentType: String,
-    // required: true,
   },
 });
 
