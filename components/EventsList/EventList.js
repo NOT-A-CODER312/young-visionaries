@@ -5,13 +5,23 @@ import Link from "next/link";
 import { charityListFirst } from "../../List/charityList";
 
 export default function EventList({ eventList }) {
-  return (
-    <div className={classes.mainCardList}>
-      {charityListFirst.map(({ img, title, des, url }) => (
-        <div key={uniqid()}>
-          <EventCard img={img} title={title} des={des} url={url} />
-        </div>
-      ))}
-    </div>
-  );
+  if (eventList) {
+    eventList.map((obj) => (obj["url"] = "/events/" + obj.eventName));
+    console.log(eventList, "map");
+
+    return (
+      <div className={classes.mainCardList}>
+        {eventList.map(({ imageLink, eventName, eventDes, url }) => (
+          <div key={uniqid()}>
+            <EventCard
+              img={imageLink}
+              title={eventName}
+              des={eventDes}
+              url={url}
+            />
+          </div>
+        ))}
+      </div>
+    );
+  }
 }

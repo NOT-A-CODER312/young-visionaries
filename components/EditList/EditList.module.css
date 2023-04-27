@@ -93,6 +93,18 @@
   padding: 5px;
 }
 
+.deleteButton {
+  margin-top: 20px;
+  background-color: red;
+  width: fit-content;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 5px;
+  color: white;
+  border: none;
+}
+
 @media screen and (max-width: 500px) {
   .eventSubmitButton {
     font-size: 3vw;

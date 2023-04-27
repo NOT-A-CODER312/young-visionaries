@@ -15,6 +15,10 @@ export default function Layout(props) {
   const { data: session } = useSession();
 
   const addAdmin = useStore((state) => state.addAdmin);
+  const uniSwitch = useStore((state) => state.uniSwitch);
+  const addVotedVp = useStore((state) => state.addVotedVp);
+  // const addVotedTreasurer = useStore((state) => state.addVotedTreasurer);
+  const addCharityList = useStore((state) => state.addCharityList);
   const addVotedVP = useStore((state) => state.addVotedVP);
   const addVotedTreasurer = useStore((state) => state.addVotedTreasurer);
   const link = useStore((state) => state.link);
@@ -38,6 +42,21 @@ export default function Layout(props) {
     })();
     // console.log("Working in layout");
   }, [link, session]);
+
+  const getAllEvents = async () => {
+    fetch("http://localhost:3009/events/")
+      .then((res) => res.json())
+      .then((res) => {
+        addCharityList(res);
+        console.log(res, "res");
+      });
+  };
+
+  useEffect(() => {
+    (async () => {
+      await getAllEvents();
+    })();
+  }, [uniSwitch]);
 
   return (
     <div>

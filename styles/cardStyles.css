@@ -126,7 +126,9 @@ form {
 }
 
 .img-ch {
-  width: 50%;
+  /* width: 400px;
+  height: 400px;
+  overflow: hidden; */
 }
 .ch-title {
   font-family: "Oswald";
@@ -135,7 +137,7 @@ form {
   margin-top: 20px;
 }
 .para {
-  margin-top: 20px;
+  margin-top: 50px;
 }
 @media screen and (min-width: 600px) {
   .App-badges {
@@ -148,9 +150,6 @@ form {
   }
 }
 @media screen and (max-width: 830px) {
-  .img-ch {
-    width: 60%;
-  }
 }
 @media screen and (max-width: 630px) {
   .img-ch {
